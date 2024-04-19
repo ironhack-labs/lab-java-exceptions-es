@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.employee.Person;
-import org.example.employee.PersonsList;
+import org.example.people.Person;
+import org.example.people.PersonsList;
 
 /**
  * Hello world!
@@ -22,14 +22,14 @@ public class App
 
     private static void clonedPerson() {
         PersonsList personsList = new PersonsList();
-        Person originalPerson = new Person(1, "Luna Hidalgo", 26, "DJ");
+        Person originalPerson = new Person(1, "Luna Hidalgo", 27, "DJ");
         Person clonedPerson = personsList.clone(originalPerson);
         System.out.println("Person cloned: " + clonedPerson);
     }
 
     private static void errorFindByName() {
         PersonsList personsList = new PersonsList();
-        Person person = new Person(3,"Francisco Diaz", 29, "Contable");
+        Person person = new Person(3,"Francisco Diaz", 29, "accountant");
         personsList.addPerson(person);
         try{
             Person foundPerson = personsList.findByName("francisco diaz");
@@ -41,7 +41,7 @@ public class App
 
     private static void findByName() {
         PersonsList personsList = new PersonsList();
-        Person person = new Person(2,"Boris Riera",34,"Programador");
+        Person person = new Person(2,"Boris Riera",34,"Programmer");
         personsList.addPerson(person);
         try {
             Person foundPerson = personsList.findByName("Boris Riera");
