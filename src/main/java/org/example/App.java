@@ -17,20 +17,14 @@ public class App {
 
         writeFile(list);
     }
-    public static void writeFile(PersonsList list) {
-        try {
-        FileWriter writer = new FileWriter("person_info.txt");
-
-        for (Person person : list.persons) {
-            writer.write(person.toString() + "\n");
-        }
-
-            writer.close();
-
-            System.out.println("Información de las personas escrita en el archivo 'person_info.txt' correctamente.");
+    public void writeFile(PersonsList list) {
+        try (FileWriter writer = new FileWriter('person_info.txt')) {
+            for (Person person : list.persons) {
+                writer.write(person.toString() + '\n');
+            }
+            System.out.println('Información de Personas escrita en el archivo correctamente.');
         } catch (IOException e) {
-        System.out.println("Error al escribir en el archivo: " + e.getMessage());
-        e.printStackTrace();
+            System.out.println('Error al escribir en el archivo: ' + e.getMessage());
         }
     }
 }

@@ -27,9 +27,9 @@ public class Person extends PersonsList {
         if (other == null) {
             return false;
         }
-        return this.name == other.name
+        return this.name.equals(other.name)
                 && this.age == other.age
-                && this.occupation == other.occupation;
+                && this.occupation.equals(other.occupation);
     }
 
     public String toString() {
