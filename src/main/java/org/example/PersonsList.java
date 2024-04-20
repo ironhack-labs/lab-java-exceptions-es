@@ -29,6 +29,7 @@ public class PersonsList {
     }
 
     public Person clone(Person original) {
-        return original;
+        int newId = this.persons.size() + 1; // Simplemente para tener un nuevo 'id', una estrategia diferente puede ser necesaria
+        return new Person(newId, original.getName(), original.getAge(), original.getOccupation());
     }
 }

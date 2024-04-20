@@ -18,13 +18,13 @@ public class App {
         writeFile(list);
     }
     public void writeFile(PersonsList list) {
-        try (FileWriter writer = new FileWriter('person_info.txt')) {
+        try (FileWriter writer = new FileWriter("person_info.txt")) {
             for (Person person : list.persons) {
-                writer.write(person.toString() + '\n');
+                writer.write(person.toString() + "\n");
             }
-            System.out.println('Información de Personas escrita en el archivo correctamente.');
+            System.out.println("Información de Personas escrita en el archivo correctamente.");
         } catch (IOException e) {
-            System.out.println('Error al escribir en el archivo: ' + e.getMessage());
+            System.out.println("Error al escribir en el archivo: " + e.getMessage());
         }
     }
 }
