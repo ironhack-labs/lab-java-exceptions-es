@@ -47,7 +47,7 @@ public class PersonsList {
         try (FileWriter writer = new FileWriter("person.txt")) {
             writer.write(person.toString());
         } catch (IOException e) {
-            System.out.println("Se produjo un error al escribir en el archivo: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
