@@ -19,6 +19,7 @@ public class PersonList {
         for (Person person : personList) {
 
             if (!name.contains(" ")) {
+                System.out.println("Datos incorrectos, el formato debe de ser Nombre Apellido");
                 throw new IllegalArgumentException("Datos incorrectos, el formato debe de ser Nombre Apellido");
             }
             if (name.equals(person.getNombreApellido())) {
@@ -28,7 +29,7 @@ public class PersonList {
 
         }
         System.out.println("No se ha encontrado ninguna persona con el nombre: " + name);
-        return null;
+        throw new IllegalArgumentException("Person no encontrado");
     }
 
     public void showList() {

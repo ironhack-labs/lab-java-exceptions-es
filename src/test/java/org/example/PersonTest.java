@@ -38,7 +38,7 @@ public class PersonTest {
         personList.addPerson(person3);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> personList.findByName("MiguelLopez"));
-        //Assertions.assertThrows(IllegalArgumentException.class, () -> personList.findByName("Vanesa Ruiz"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> personList.findByName("Vanesa Ruiz"));
         //Assertions.assertThrows(IllegalArgumentException.class, () -> personList.findByName("Miguel Lopez"));
         //Assertions.assertThrows(IllegalArgumentException.class, () -> personList.findByName(null));
         System.out.println("FindByName funciona correctamente lanzando IllegalArgumentException cuando el formato de Nombre Apellido es incorrecto");
@@ -49,7 +49,7 @@ public class PersonTest {
     void clonePersonReturnsPersonOk() {
         Person person4 = person3.clonePerson(person3);
 
-        Assertions.assertTrue(person4.getNombreApellido() == person3.getNombreApellido() && person4.getAge() == person3.getAge() && person4.getOccupation() == person3.getOccupation());
+        Assertions.assertTrue(person4.getNombreApellido().equals(person3.getNombreApellido()) && person4.getAge() == person3.getAge() && person4.getOccupation().equals(person3.getOccupation()));
 
         System.out.println("clonePerson tiene los mismos atributosque que el Person clonado");
     }
