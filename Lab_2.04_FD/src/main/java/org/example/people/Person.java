@@ -1,5 +1,10 @@
 package org.example.people;
 
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+
 public class Person {
     private int id;
     private String name;
@@ -60,5 +65,29 @@ public class Person {
                 ", age: " + age +
                 ", occupation: '" + occupation + '\'' +
                 '.';
+    }
+
+    @Test
+    public void testSetAgeValid(){
+        Person person = new Person(1,"Blanca Gomez", 31, "Step up");
+        person.setAge(32);
+        assertEquals(32, person.getAge());
+    }
+    @Test
+    public void testSetAgeInvalid(){
+        Person person = new Person(1, "Blanca Gomez", 31, "Step up");
+        assertThrows(IllegalArgumentException.class , () -> person.setAge(-5)); }
+
+    @Test
+    public void testEqualsSameProperties(){
+        Person person = new Person(2,"Boris Riera", 33,"Programmer");
+        Person person1 = new Person(3, "Boris Riera", 33, "Programmer");
+        assertTrue(person.equals(person1));
+    }
+    @Test
+    public void testEqualsDifferentProperties(){
+        Person person = new Person(2,"Boris Riera", 33,"Programmer");
+        Person person1 = new Person(4, "Luna Hidalgo", 28, "DJ");
+        assertFalse(person.equals(person1));
     }
 }
