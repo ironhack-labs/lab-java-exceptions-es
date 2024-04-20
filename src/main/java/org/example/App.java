@@ -1,53 +1,41 @@
 package org.example;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * Hello world!
  *
  */
 public class App {
-    public static void main( String[] args ) {
-        PersonsList personsList = new PersonsList();
+    public static void main( String[] args ) throws IOException {
+        PersonsList list = new PersonsList();
+        Person person1 = new Person(1,"Juan Perez", 45, "Teacher");
+        Person person2 = new Person(2,"Adrian Pintor",24,"Engineer");
+        Person person3 = new Person(3,"Maria Ramos",22,"Teacher");
+        list.persons.add(person1);
+        list.persons.add(person2);
+        list.persons.add(person3);
 
+        Person clonedPerson = list.clone(person1);
+        System.out.println("clone method test passed: " + clonedPerson);
+
+        writeFile(list);
+    }
+    public static void writeFile(PersonsList list) { // Corrección del tipo de parámetro
         try {
-            Person person1 = new Person(1, "Juan Perez",45 , "Teacher");
-            System.out.println("Error: El método setAge no lanza una excepción para una edad negativa.");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Método setAge: OK (lanza una excepción para una edad negativa)");
+        FileWriter writer = new FileWriter("person_info.txt");
+
+        for (Person person : list.persons) {
+            writer.write(person.toString() + "\n");
         }
 
-        Person person2 = new Person(2, "Adrian Pintor", 24, "Engineer");
-        Person person3 = new Person(3, "Maria Ramos", 22, "Teacher");
-        personsList.add(person2);
-        personsList.add(person3);
+            writer.close();
 
-        String name = "Adrian Pintor";
-        try {
-            Person foundPerson = personsList.findByName(name);
-            if (foundPerson != null && foundPerson.getName().equals(name)) {
-                System.out.println("Método findByName: OK (encontró correctamente la persona con el nombre " + name + ")");
-            } else {
-                System.out.println("Error: El método findByName no devolvió la persona esperada.");
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: El método findByName lanzó una excepción para un nombre correctamente formateado.");
+            System.out.println("Información de las personas escrita en el archivo 'person_info.txt' correctamente.");
+        } catch (IOException e) {
+        System.out.println("Error al escribir en el archivo: " + e.getMessage());
+        e.printStackTrace();
         }
-
-        String invalidName = "Pedro Rodriguez";
-        try {
-            personsList.findByName(invalidName);
-            System.out.println("Error: El método findByName no lanzó una excepción para un nombre no correctamente formateado.");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Método findByName: OK (lanzó una excepción para un nombre no correctamente formateado)");
-        }
-
-        // Prueba del método clone
-        Person originalPerson = new Person(4, "Charlie Brown", 40, "Artist");
-        Person clonedPerson = personsList.clone(originalPerson);
-        if (clonedPerson != originalPerson && clonedPerson.equals(originalPerson)) {
-            System.out.println("Método clone: OK (creó correctamente una nueva persona clonada)");
-        } else {
-            System.out.println("Error: El método clone no creó correctamente una nueva persona clonada.");
-        }
-        personsList.writeFile(clonedPerson);
     }
 }

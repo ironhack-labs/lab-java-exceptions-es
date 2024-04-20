@@ -1,5 +1,7 @@
 package org.example;
+
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonTest {
@@ -35,7 +37,7 @@ public class PersonTest {
 
     @Test
     public void testCloneCreatesNewPersonWithSamePropertiesExceptId() {
-        Person originalPerson = new Person(1, "Juan Perez", 45, "Teacher");
+        Person originalPerson = new Person(4, "Juan Perez", 45, "Teacher");
         PersonsList personsList = new PersonsList();
         personsList.add(originalPerson);
 
@@ -47,5 +49,4 @@ public class PersonTest {
 
         assertTrue(originalPerson.equals(clonedPerson));
     }
-
 }
