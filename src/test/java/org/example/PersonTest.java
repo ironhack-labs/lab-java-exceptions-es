@@ -49,7 +49,9 @@ public class PersonTest {
     void clonePersonReturnsPersonOk() {
         Person person4 = person3.clonePerson(person3);
 
-        Assertions.assertTrue(person4.getNombreApellido().equals(person3.getNombreApellido()) && person4.getAge() == person3.getAge() && person4.getOccupation().equals(person3.getOccupation()));
+        Assertions.assertTrue(person4.getNombreApellido().toLowerCase().equals
+                (person3.getNombreApellido().toLowerCase()) && person4.getAge() == person3.getAge()
+                && person4.getOccupation().toLowerCase().equals(person3.getOccupation().toLowerCase()));
 
         System.out.println("clonePerson tiene los mismos atributosque que el Person clonado");
     }

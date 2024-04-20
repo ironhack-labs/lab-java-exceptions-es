@@ -55,7 +55,7 @@ public class Person {
     }
 
     public boolean equals(Person person){
-        if (this.nombreApellido.equals(person.nombreApellido) && this.age == person.age && this.occupation.equals(person.occupation)){
+        if (this.nombreApellido.equals(person.nombreApellido.toLowerCase()) && this.age == person.age && this.occupation.equals(person.occupation.toLowerCase())){
             System.out.println("La persona "+this.nombreApellido+" y la persona "+person.getNombreApellido()+" son iguales");
             return true;
         } else {
@@ -75,6 +75,8 @@ public class Person {
     public void writePersonToFile(Person person, String filename) throws IOException {
         try (FileWriter writer = new FileWriter(filename, true)) {
             writer.write(person.toString() + "\n");
+        }catch (IOException e){
+            System.err.println("No se ha podido abrir el archivo. " + e.getMessage());
         }
 
     }
