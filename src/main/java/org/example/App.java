@@ -2,11 +2,6 @@ package org.example;
 
 import java.io.FileWriter;
 import java.io.IOException;
-
-/**
- * Hello world!
- *
- */
 public class App {
     public static void main( String[] args ) throws IOException {
         PersonsList list = new PersonsList();
@@ -18,11 +13,11 @@ public class App {
         list.persons.add(person3);
 
         Person clonedPerson = list.clone(person1);
-        System.out.println("clone method test passed: " + clonedPerson);
+        System.out.println(clonedPerson);
 
         writeFile(list);
     }
-    public static void writeFile(PersonsList list) { // Corrección del tipo de parámetro
+    public static void writeFile(PersonsList list) {
         try {
         FileWriter writer = new FileWriter("person_info.txt");
 
