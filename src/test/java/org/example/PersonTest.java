@@ -49,6 +49,7 @@ public class PersonTest {
     void clonePersonReturnsPersonOk() {
         Person person4 = person3.clonePerson(person3);
 
+        Assertions.assertFalse(person4.getId() == person3.getId());
         Assertions.assertTrue(person4.getNombreApellido().toLowerCase().equals
                 (person3.getNombreApellido().toLowerCase()) && person4.getAge() == person3.getAge()
                 && person4.getOccupation().toLowerCase().equals(person3.getOccupation().toLowerCase()));
