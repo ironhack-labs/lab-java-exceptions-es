@@ -8,7 +8,7 @@ public class PersonTest {
 
     @Test
     @DisplayName("Testing setAge con edades negativas")
-    void setAgeWithNegativeNumbersThrowsIllegalArgumentException() {
+    void setAge_NegativeNumbers_ThrowsIllegalArgumentException() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> person1.setAge(-2));
         Assertions.assertThrows(IllegalArgumentException.class, () -> person2.setAge(-76));
         //Assertions.assertThrows(IllegalArgumentException.class, () -> person2.setAge(14));
@@ -18,7 +18,7 @@ public class PersonTest {
 
     @Test
     @DisplayName("Testing findByName()")
-    void findByNameReturnsPersonOk() {
+    void findByName_ReturnsPerson_Ok() {
         personList.addPerson(person1);
         personList.addPerson(person2);
         personList.addPerson(person3);
@@ -32,7 +32,7 @@ public class PersonTest {
 
     @Test
     @DisplayName("Testing findByName con nombre en formato incorrecto")
-    void findByNameWithWrongFormatThrowsIllegalArgumentException() {
+    void findByName_WrongFormat_ThrowsIllegalArgumentException() {
         personList.addPerson(person1);
         personList.addPerson(person2);
         personList.addPerson(person3);
@@ -46,9 +46,10 @@ public class PersonTest {
 
     @Test
     @DisplayName("Testing clonePerson()")
-    void clonePersonReturnsPersonOk() {
+    void clonePerson_ReturnsPerson_Ok() {
         Person person4 = person3.clonePerson(person3);
 
+        Assertions.assertFalse(person4.getId() == person3.getId());
         Assertions.assertTrue(person4.getNombreApellido().toLowerCase().equals
                 (person3.getNombreApellido().toLowerCase()) && person4.getAge() == person3.getAge()
                 && person4.getOccupation().toLowerCase().equals(person3.getOccupation().toLowerCase()));
